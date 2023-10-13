@@ -1,0 +1,19 @@
+input{
+    width: 100px;
+    height: 20px;
+}
+*{
+    margin: auto;
+}
+select{
+    width: 140px;
+    height: 30px;
+}
+button{
+    width: 100px;
+    height: 20px;
+    margin-left: 45%;
+}
+h3{
+    margin-left: 45%;
+}

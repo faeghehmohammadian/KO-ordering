@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <h1 style="text-align: center;">
+        Ordering
+    </h1>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th><th>Pizza</th><th>Salads</th><th>Drinks</th><th>Total</th><th>Remove</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: seats"> 
+            <tr>
+                <td ><input data-bind="value: name"></td>
+                <td><select data-bind="options:$root.availableMeals,
+                                        value:meal,
+                                        optionsText:'mealName'"></select></td>
+                <td><select data-bind="options:  
+                    $root.availableSalads,
+                    value:salad,
+                    optionsText:'saladName'"></select></td>
+                <td><select data-bind="options:  
+                    $root.availableDrinks,
+                    value:drink,
+                    optionsText:'drinkName'"></select></td>
+                <td data-bind="text:formattedPrice"></td>
+                <td><a href="#" data-bind="click:$root.deleteSeat">Remove</a></td>
+            </tr>
+        </tbody>
+        
+    </table>
+    <br>
+    ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    <br>
+    <table>
+        
+    <tbody data-bind="foreach: seats"> 
+        <td >Dear <b data-bind="text: name"></td>
+        <tr>
+            
+                <tr>
+                    <th> Chosen </th><th>Price</th>
+                </tr>
+            <tr data-bind="visible:meal().price!=0">
+                <td data-bind="text: meal().mealName"></td>
+                <td data-bind="text: meal().price"></td>
+            </tr>
+            <tr data-bind="visible:salad().price!=0">
+                <td data-bind="text: salad().saladName"></td>
+                <td data-bind="text: salad().price"></td>
+            </tr>
+            <tr data-bind="visible:drink().price!=0">
+                <td data-bind="text: drink().drinkName"></td>
+                <td data-bind="text: drink().price"></td>
+            </tr>
+            
+        </tr>
+    </tbody>
+    
+</table>
+    
+    <h3 data-bind="visible:totalSurcharge()>0">
+        Total all: $<span data-bind="text:totalSurcharge().toFixed(2)"></span>
+    </h3>
+    <br>
+    <br>
+    <button data-bind="click: addSeat">Add</button>
+    <script src="knockout-3.5.1.js"></script> 
+    <script src="knockout.js"></script>
+</body>
+</html>
